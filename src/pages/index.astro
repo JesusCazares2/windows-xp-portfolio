@@ -1,0 +1,226 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Taskbar from '../components/Taskbar.astro';
+---
+
+<Layout title="Windows XP Portfolio">
+  
+  <main class="desktop">
+    <div class="xp-window" id="portfolio-window">
+      <div class="title-bar">
+        <div class="title-bar-text">
+          <img src="https://winxp.vercel.app/assets/icons/directory_explorer-0.png" class="window-title-icon" alt="" />
+          My Portfolio
+        </div>
+        <div class="title-bar-controls">
+          <button class="win-btn minimize" id="close-window-btn" aria-label="Minimize"></button>
+          <button class="win-btn maximize" aria-label="Maximize"></button>
+          <button class="win-btn close" id="minimize-window-btn" aria-label="Close"></button>
+        </div>
+      </div>
+
+      <div class="window-body">
+        <aside class="explorer-sidebar">
+          <div class="sidebar-section">
+            <h3>Portfolio Places</h3>
+            <ul>
+              <li><button class="nav-link active" data-content="home">🏠 Home</button></li>
+              <li><button class="nav-link" data-content="about">👤 About Me</button></li>
+              <li><button class="nav-link" data-content="work">💻 Relevant Work</button></li>
+            </ul>
+          </div>
+        </aside>
+
+        <section class="explorer-content" id="display-panel">
+          <h2>Welcome to My Portfolio</h2>
+          <p>Click on the sidebar folder links to explore</p>
+        </section>
+      </div>
+    </div>
+  </main>
+
+  <Taskbar />
+
+</Layout>
+
+<style>
+  .desktop {
+    width: 100vw;
+    height: calc(100vh - 30px);
+    position: relative;
+    padding: 40px;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  /* WINDOW FRAME */
+  .xp-window {
+    width: 650px;
+    height: 450px;
+    background: #ece9d8;
+    border: 3px solid #0054e3;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* TITLE BAR */
+  .title-bar {
+    background: linear-gradient(to bottom, #0058e6 0%, #3a93ff 10%, #0056e2 40%, #0042c1 100%);
+    padding: 4px 6px;
+    color: white;
+    font-weight: bold;
+    font-size: 13px;
+    font-family: 'Tahoma', sans-serif;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .window-title-icon {
+    width: 16px;
+    height: 16px;
+    margin-right: 4px;
+    vertical-align: middle;
+    image-rendering: pixelated;
+  }
+
+  /* TITLE BAR OS BUTTONS */
+  .title-bar-controls {
+    display: flex;
+    gap: 2px;
+  }
+
+  .win-btn {
+    width: 21px;
+    height: 21px;
+    border: 1px solid #fff;
+    border-radius: 3px;
+    cursor: pointer;
+    box-shadow: inset 1px 1px 1px rgba(255,255,255,0.5);
+  }
+  .win-btn.minimize { background: #0054e3; position: relative; }
+  .win-btn.minimize::before { content: ''; position: absolute; bottom: 4px; left: 4px; width: 10px; height: 3px; background: white; }
+  
+  .win-btn.maximize { background: #0054e3; position: relative; }
+  .win-btn.maximize::before { content: ''; position: absolute; top: 4px; left: 4px; width: 11px; height: 11px; border: 2px solid white; border-top: 3px solid white; box-sizing: border-box; }
+
+  .win-btn.close { 
+    background: linear-gradient(to bottom, #e7664a 0%, #d13a1a 100%); 
+    border-color: #7b1300;
+    color: white;
+    font-weight: bold;
+    font-size: 13px;
+    line-height: 16px;
+  }
+  .win-btn.close::before { content: '×'; display: block; text-align: center; }
+
+  /* WINDOW CONTENT SPLIT */
+  .window-body {
+    flex-grow: 1;
+    display: flex;
+    overflow: hidden;
+    background: white;
+    margin: 2px;
+    border: 1px solid #7f9db9;
+  }
+
+  /* SIDEBAR DECORATION */
+  .explorer-sidebar {
+    width: 180px;
+    background: linear-gradient(to bottom, #7497cf 0%, #cbe1ff 100%);
+    padding: 10px;
+    border-right: 1px solid #6b8dc2;
+  }
+
+  .sidebar-section {
+    background: white;
+    border-radius: 4px;
+    border: 1px solid #fff;
+    box-shadow: 1px 1px 4px rgba(0,0,0,0.2);
+    overflow: hidden;
+  }
+
+  .sidebar-section h3 {
+    margin: 0;
+    background: linear-gradient(to right, #225ad5 0%, #6495ed 100%);
+    color: white;
+    font-size: 11px;
+    padding: 4px 8px;
+    font-family: 'Tahoma', sans-serif;
+  }
+
+  .sidebar-section ul {
+    list-style: none;
+    padding: 6px;
+    margin: 0;
+  }
+
+  .sidebar-section button {
+    background: none;
+    border: none;
+    width: 100%;
+    text-align: left;
+    font-size: 11px;
+    padding: 3px 6px;
+    cursor: pointer;
+    color: #002299;
+  }
+
+  .sidebar-section button:hover {
+    text-decoration: underline;
+  }
+
+  /* DYNAMIC VIEWPORT RIGHT SIDE */
+  .explorer-content {
+    flex-grow: 1;
+    padding: 20px;
+    overflow-y: auto;
+    font-family: 'Tahoma', sans-serif;
+    color: #333;
+  }
+</style>
+
+<script>
+  // DOM Elements
+  const toggleBtn = document.getElementById('toggle-portfolio-btn');
+  const portfolioWindow = document.getElementById('portfolio-window');
+  const closeBtn = document.getElementById('close-window-btn');
+  const displayPanel = document.getElementById('display-panel');
+  const navButtons = document.querySelectorAll('.nav-link');
+
+  // 1. Taskbar Toggle functionality
+  toggleBtn?.addEventListener('click', () => {
+    if (portfolioWindow) {
+      if (portfolioWindow.style.display === 'none') {
+        portfolioWindow.style.display = 'flex';
+      } else {
+        portfolioWindow.style.display = 'none';
+      }
+    }
+  });
+
+  closeBtn?.addEventListener('click', () => {
+    if (portfolioWindow) portfolioWindow.style.display = 'none';
+  });
+
+  // 2. Simple Client-Side Folder Navigation Shell
+  const contentData = {
+    home: `<h2>Welcome to My Portfolio</h2><p>Click on the sidebar folder links to explore my engineering work.</p>`,
+    about: `<h2>About Me</h2><p>I am a computer science student building things with Astro.</p>`,
+    work: `<h2>Relevant Work</h2><p>Details about software development, robotic control algorithms, or database architectures go here.</p>`
+  };
+
+  navButtons.forEach(button => {
+    button.addEventListener('click', (e) => {
+      const target = button.getAttribute('data-content');
+      if (displayPanel && target && contentData[target]) {
+        displayPanel.innerHTML = contentData[target];
+      }
+    });
+  });
+</script>

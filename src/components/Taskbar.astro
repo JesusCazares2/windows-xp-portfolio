@@ -1,0 +1,120 @@
+---
+import folderImage from '../assets/windowsXPFolder.png';
+---
+
+<div class="xp-taskbar">
+  <button class="start-button">
+    <span class="start-text">start</span>
+  </button>
+  
+  <button class="folder-tray" id="toggle-portfolio-btn">
+    <img id=folderImage src={folderImage.src} class="folder-icon" alt="Folder" />
+    <span class="folder-text">My Portfolio</span>
+  </button>
+
+  <div class="system-tray">
+    <span class="clock" id="xp-clock">12:00 PM</span>
+  </div>
+</div>
+
+<style>
+  .xp-taskbar {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 30px;
+    background: linear-gradient(to bottom, #245edb 0%, #3f8cf3 9%, #1b52e3 18%, #174be6 55%, #194fe7 81%, #2460e8 100%);
+    border-top: 1px solid #1a3e95;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    z-index: 9999; /* Keeps it on top of open windows */
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.3);
+  }
+
+  .start-button {
+    height: 100%;
+    border: none;
+    padding: 0 15px;
+    font-weight: bold;
+    font-style: italic;
+    font-size: 14px;
+    color: white;
+    text-shadow: 1px 1px 1px rgba(0,0,0,0.4);
+    /* The iconic rounded green Start button gradient */
+    background: linear-gradient(to bottom, #388e3c 0%, #4caf50 10%, #388e3c 25%, #2e7d32 85%, #1b5e20 100%);
+    border-right: 1px solid #1b5e20;
+    box-shadow: inset -1px 0 2px rgba(255,255,255,0.4), 2px 0 5px rgba(0,0,0,0.2);
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    cursor: pointer;
+  }
+
+  .start-button:active {
+    background: linear-gradient(to bottom, #1b5e20 0%, #2e7d32 100%);
+  }
+
+  .system-tray {
+    margin-left: auto;
+    height: 100%;
+    background: linear-gradient(to bottom, #0c8cee 0%, #1f74d8 10%, #0d59b4 25%, #064094 85%, #0a3376 100%);
+    border-left: 1px solid #083171;
+    box-shadow: inset 1px 0 1px rgba(0,0,0,0.3);
+    padding: 0 15px;
+    display: flex;
+    align-items: center;
+  }
+  .folder-tray {
+    height: 22px;
+    margin-left: 10px;
+    background: #3873d9;
+    border-radius: 3px;
+    border: 1px solid #214fa3;
+    box-shadow: inset 1px 1px 1px rgba(255,255,255,0.2);
+    display: flex;
+    align-items: center;
+    padding: 0 8px;
+    color: white;
+    max-width: 150px;
+    min-width: 100px;
+  }
+
+  .folder-tray:hover {
+    background: #4c8ffc;
+  }
+
+  .folder-icon {
+    width: 14px;
+    height: 14px;
+    margin-right: 5px;
+    image-rendering: pixelated;
+  }
+
+  .folder-text {
+    font-size: 11px;
+    font-family: 'Tahoma', sans-serif;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .clock {
+    color: #ffffff;
+    font-size: 11px;
+    font-family: 'Tahoma', sans-serif;
+  }
+</style>
+
+<script>
+  // Simple script to make the clock display real time
+  function updateClock() {
+    const clockEl = document.getElementById('xp-clock');
+    if (clockEl) {
+      const now = new Date();
+      clockEl.textContent = now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+    }
+  }
+  setInterval(updateClock, 1000);
+  updateClock();
+</script>
