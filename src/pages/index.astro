@@ -5,6 +5,7 @@ import folderImage from '../assets/windowsXPFolder.png';
 import ProjectContent from '../components/Projects.astro';
 import FullertonFunhouse from '../components/FullertonFunhouse.astro';
 import RiseAndGrind from '../components/RiseAndGrind.astro';
+import OdooTesting from '../components/OdooTesting.astro';
 import ContactContent from '../components/Contact.astro';
 ---
 
@@ -36,6 +37,7 @@ import ContactContent from '../components/Contact.astro';
                 <ul class="submenu hidden" id="projects-submenu">
                   <li><button class="nav-link" data-content="fullerton-funhouse">Fullerton Funhouse</button></li>
                   <li><button class="nav-link" data-content="rise-and-grind">Rise and Grind</button></li>
+                  <li><button class="nav-link" data-content="odoo-testing">Odoo Software Testing</button></li>
                 </ul>
               </li>
               <li><button class="nav-link" data-content="contact">📞 Contact</button></li>
@@ -60,6 +62,9 @@ import ContactContent from '../components/Contact.astro';
           </div>
           <div id="content-rise-and-grind" class="content-section hidden">
             <RiseAndGrind />
+          </div>
+          <div id="content-odoo-testing" class="content-section hidden">
+            <OdooTesting />
           </div>
           <div id="content-contact" class="content-section hidden">
             <ContactContent />
