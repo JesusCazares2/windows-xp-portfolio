@@ -4,6 +4,7 @@ import Taskbar from '../components/Taskbar.astro';
 import folderImage from '../assets/windowsXPFolder.png';
 import WorkContent from '../components/Work.astro';
 import FullertonFunhouse from '../components/FullertonFunhouse.astro';
+import RiseAndGrind from '../components/RiseAndGrind.astro';
 ---
 
 <Layout title="Windows XP Portfolio">
@@ -33,6 +34,7 @@ import FullertonFunhouse from '../components/FullertonFunhouse.astro';
                 <button class="nav-link" data-content="work">📂 Projects</button>
                 <ul class="submenu hidden" id="projects-submenu">
                   <li><button class="nav-link" data-content="fullerton-funhouse">Fullerton Funhouse</button></li>
+                  <li><button class="nav-link" data-content="rise-and-grind">Rise and Grind</button></li>
                 </ul>
               </li>
             </ul>
@@ -54,7 +56,9 @@ import FullertonFunhouse from '../components/FullertonFunhouse.astro';
           <div id="content-fullerton-funhouse" class="content-section hidden">
             <FullertonFunhouse />
           </div>
-          
+          <div id="content-rise-and-grind" class="content-section hidden">
+            <RiseAndGrind />
+          </div>
         </section>
       </div>
     </div>
