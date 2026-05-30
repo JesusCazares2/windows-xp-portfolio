@@ -2,9 +2,10 @@
 import Layout from '../layouts/Layout.astro';
 import Taskbar from '../components/Taskbar.astro';
 import folderImage from '../assets/windowsXPFolder.png';
-import WorkContent from '../components/Work.astro';
+import ProjectContent from '../components/Projects.astro';
 import FullertonFunhouse from '../components/FullertonFunhouse.astro';
 import RiseAndGrind from '../components/RiseAndGrind.astro';
+import ContactContent from '../components/Contact.astro';
 ---
 
 <Layout title="Windows XP Portfolio">
@@ -28,15 +29,16 @@ import RiseAndGrind from '../components/RiseAndGrind.astro';
           <div class="sidebar-section">
             <h3>Portfolio Places</h3>
             <ul>
-              <li><button class="nav-link active" data-content="home">🏠 Home</button></li>
+              <li><button class="nav-link active" data-content="home">💼 Work Experience</button></li>
               <li><button class="nav-link" data-content="about">👤 About Me</button></li>
               <li>
-                <button class="nav-link" data-content="work">📂 Projects</button>
+                <button class="nav-link" data-content="project">📂 Projects</button>
                 <ul class="submenu hidden" id="projects-submenu">
                   <li><button class="nav-link" data-content="fullerton-funhouse">Fullerton Funhouse</button></li>
                   <li><button class="nav-link" data-content="rise-and-grind">Rise and Grind</button></li>
                 </ul>
               </li>
+              <li><button class="nav-link" data-content="contact">📞 Contact</button></li>
             </ul>
           </div>
         </aside>
@@ -50,14 +52,17 @@ import RiseAndGrind from '../components/RiseAndGrind.astro';
             <h2>About Me</h2>
             <p>I am a computer science student building things with Astro.</p>
           </div>
-          <div id="content-work" class="content-section hidden">
-            <WorkContent />
+          <div id="content-project" class="content-section hidden">
+            <ProjectContent />
           </div>
           <div id="content-fullerton-funhouse" class="content-section hidden">
             <FullertonFunhouse />
           </div>
           <div id="content-rise-and-grind" class="content-section hidden">
             <RiseAndGrind />
+          </div>
+          <div id="content-contact" class="content-section hidden">
+            <ContactContent />
           </div>
         </section>
       </div>
@@ -291,7 +296,7 @@ import RiseAndGrind from '../components/RiseAndGrind.astro';
       if (!target) return;
 
       // Toggle projects submenu visibility if the Projects folder is clicked
-      if (target === 'work') {
+      if (target === 'project') {
         const submenu = document.getElementById('projects-submenu');
         submenu?.classList.toggle('hidden');
       }
