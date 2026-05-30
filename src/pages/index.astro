@@ -40,7 +40,14 @@ import ContactContent from '../components/Contact.astro';
                   <li><button class="nav-link" data-content="odoo-testing">Odoo Software Testing</button></li>
                 </ul>
               </li>
-              <li><button class="nav-link" data-content="contact">📞 Contact</button></li>
+              <li>
+                <button class="nav-link" data-content="contact">📞 Contact</button>
+                <ul class="submenu hidden" id="contact-submenu">
+                  <li><button class="nav-link" data-content="email">Email</button></li>
+                  <li><button class="nav-link" data-content="linkedin">LinkedIn</button></li>
+                  <li><button class="nav-link" data-content="github">GitHub</button></li>
+                </ul>
+              </li>
             </ul>
           </div>
         </aside>
@@ -226,7 +233,6 @@ import ContactContent from '../components/Contact.astro';
     text-decoration: underline;
   }
 
-  /* Highlights active links in sidebar and icons in folder view */
   .nav-link.active {
     background-color: #1660E8;
     color: white;
@@ -295,25 +301,37 @@ import ContactContent from '../components/Contact.astro';
     }
   });
 
-  navButtons.forEach(button => {
-    button.addEventListener('click', () => {
-      const target = button.getAttribute('data-content');
-      if (!target) return;
+  const handleNavigation = (button: Element) => {
+    const target = button.getAttribute('data-content');
+    if (!target) return;
 
-      // Toggle projects submenu visibility if the Projects folder is clicked
-      if (target === 'project') {
-        const submenu = document.getElementById('projects-submenu');
-        submenu?.classList.toggle('hidden');
-      }
-      
-      // Sync active state across ALL navigation links (sidebar and icons)
-      document.querySelectorAll('.nav-link').forEach(btn => {
-        btn.classList.toggle('active', btn.getAttribute('data-content') === target);
-      });
+    if (target === 'email') {
+      window.location.href = "mailto:jesusmcazares12@gmail.com";
+      return;
+    }
+    if (target === 'linkedin') {
+      window.open("https://www.linkedin.com/in/jesus-cazares2/", "_blank");
+      return;
+    }
+    if (target === 'github') {
+      window.open("https://github.com/JesusCazares2", "_blank");
+      return;
+    }
 
-      const sections = document.querySelectorAll('.content-section');
-      sections.forEach(s => s.classList.add('hidden'));
-      document.getElementById(`content-${target}`)?.classList.remove('hidden');
-    });
-  });
+    if (target === 'project') {
+      document.getElementById('projects-submenu')?.classList.toggle('hidden');
+    } else if (target === 'contact') {
+      document.getElementById('contact-submenu')?.classList.toggle('hidden');
+    }
+    
+    navButtons.forEach(btn => btn.classList.toggle('active', btn.getAttribute('data-content') === target));
+
+    const targetSection = document.getElementById(`content-${target}`);
+    if (targetSection) {
+      document.querySelectorAll('.content-section').forEach(s => s.classList.add('hidden'));
+      targetSection.classList.remove('hidden');
+    }
+  };
+
+  navButtons.forEach(button => button.addEventListener('click', () => handleNavigation(button)));
 </script>
