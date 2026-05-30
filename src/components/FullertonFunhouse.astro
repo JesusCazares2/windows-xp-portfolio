@@ -7,6 +7,7 @@ import flappyBird from '../assets/FB.png';
 import slotMachine from '../assets/SM.png';
 import spaceShooter from '../assets/spaceShooter.png';
 ---
+<div id="ff-project-wrapper">
 <div class="project-item">
   <h4>Fullerton Funhouse</h4>
   <p>Architected a full-stack web platform featuring 6 interactive titles, utilizing Python (Flask) and JavaScript to manage game states and dynamic frontend interactivity.</p>
@@ -55,7 +56,8 @@ import spaceShooter from '../assets/spaceShooter.png';
   </div>
 
   <a class="prev" id="prevSlide">&#10094;</a>
-  <a class="next" id="nextSlide">&#10095;</a>
+  <a class="next" id="ffNextSlide">&#10095;</a>
+  <a class="prev" id="ffPrevSlide">&#10094;</a>
 </div>
 
 <br> 
@@ -68,6 +70,7 @@ import spaceShooter from '../assets/spaceShooter.png';
   <span class="dot"></span>
   <span class="dot"></span>
   <span class="dot"></span>
+</div>
 </div>
 
 <style>
@@ -160,11 +163,13 @@ import spaceShooter from '../assets/spaceShooter.png';
 </style>
 
 <script>
+  const wrapper = document.getElementById("ff-project-wrapper");
+  const slides = wrapper?.querySelectorAll(".mySlides") as NodeListOf<HTMLElement>;
+  const dots = wrapper?.querySelectorAll(".dot") as NodeListOf<HTMLElement>;
   let slideIndex = 1;
-  const slides = document.querySelectorAll(".mySlides") as NodeListOf<HTMLElement>;
-  const dots = document.querySelectorAll(".dot") as NodeListOf<HTMLElement>;
 
   function showSlides(n) {
+    if (!slides || !dots) return;
     if (n > slides.length) slideIndex = 1;
     if (n < 1) slideIndex = slides.length;
 
@@ -177,8 +182,8 @@ import spaceShooter from '../assets/spaceShooter.png';
 
   showSlides(slideIndex);
 
-  document.getElementById("prevSlide")?.addEventListener("click", () => showSlides(--slideIndex));
-  document.getElementById("nextSlide")?.addEventListener("click", () => showSlides(++slideIndex));
+  wrapper?.querySelector("#ffPrevSlide")?.addEventListener("click", () => showSlides(--slideIndex));
+  wrapper?.querySelector("#ffNextSlide")?.addEventListener("click", () => showSlides(++slideIndex));
 
   dots.forEach((dot, index) => {
     dot.addEventListener("click", () => {
