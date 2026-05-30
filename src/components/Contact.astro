@@ -1,0 +1,69 @@
+---
+import folderImage from '../assets/windowsXPFolder.png';
+---
+<div class="contact-container">
+  <h2>Contact</h2>
+  <p>Feel free to reach out through any of the platforms below:</p>
+  
+  <div class="folder-grid">
+    <a href="mailto:jesusmcazares12@gmail.com" class="icon-item">
+      <img src={folderImage.src} alt="Folder" />
+      <span>Email</span>
+    </a>
+
+    <a href="https://www.linkedin.com/in/jesus-cazares2/" target="_blank" rel="noopener noreferrer" class="icon-item">
+      <img src={folderImage.src} alt="Folder" />
+      <span>LinkedIn</span>
+    </a>
+
+    <a href="https://github.com/JesusCazares2" target="_blank" rel="noopener noreferrer" class="icon-item">
+      <img src={folderImage.src} alt="Folder" />
+      <span>GitHub</span>
+    </a>
+  </div>
+</div>
+
+<style>
+  .contact-container {
+    width: 100%;
+  }
+
+  .folder-grid {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 15px;
+    padding: 20px 0;
+    width: 100%;
+    justify-content: flex-start;
+  }
+
+  .icon-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 110px;
+    background: none;
+    border: 1px solid transparent;
+    cursor: pointer;
+    padding: 8px 4px;
+    transition: all 0.1s;
+    vertical-align: top;
+  }
+
+  .icon-item img {
+    width: 48px !important;
+    height: 48px !important;
+    margin-bottom: 4px;
+    display: block;
+  }
+
+  .icon-item span {
+    font-size: 12px;
+    text-align: center;
+    color: #000;
+    width: 100%;
+    word-wrap: break-word;
+    text-decoration: none;
+  }
+</style>
