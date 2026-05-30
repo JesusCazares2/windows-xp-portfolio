@@ -1,6 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import Taskbar from '../components/Taskbar.astro';
+import folderImage from '../assets/windowsXPFolder.png';
 ---
 
 <Layout title="Windows XP Portfolio">
@@ -9,13 +10,13 @@ import Taskbar from '../components/Taskbar.astro';
     <div class="xp-window" id="portfolio-window">
       <div class="title-bar">
         <div class="title-bar-text">
-          <img src="https://winxp.vercel.app/assets/icons/directory_explorer-0.png" class="window-title-icon" alt="" />
+          <img id=folderImage src={folderImage.src} class="window-title-icon" alt="Folder" />
           My Portfolio
         </div>
         <div class="title-bar-controls">
-          <button class="win-btn minimize" id="close-window-btn" aria-label="Minimize"></button>
-          <button class="win-btn maximize" aria-label="Maximize"></button>
-          <button class="win-btn close" id="minimize-window-btn" aria-label="Close"></button>
+          <button class="win-btn minimize" id="minimize-window-btn" aria-label="Minimize"></button>
+          <button class="win-btn maximize" id="maximize-window-btn" aria-label="Maximize"></button>
+          <button class="win-btn close" id="close-window-btn" aria-label="Close"></button>
         </div>
       </div>
 
@@ -55,10 +56,9 @@ import Taskbar from '../components/Taskbar.astro';
     align-items: center;
   }
 
-  /* WINDOW FRAME */
   .xp-window {
-    width: 650px;
-    height: 450px;
+    width: 950px;
+    height: 750px;
     background: #ece9d8;
     border: 3px solid #0054e3;
     border-top-left-radius: 5px;
@@ -68,7 +68,17 @@ import Taskbar from '../components/Taskbar.astro';
     flex-direction: column;
   }
 
-  /* TITLE BAR */
+  .xp-window.maximized {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: calc(100vh - 30px);
+    border-radius: 0;
+    border: none;
+    z-index: 5000;
+  }
+
   .title-bar {
     background: linear-gradient(to bottom, #0058e6 0%, #3a93ff 10%, #0056e2 40%, #0042c1 100%);
     padding: 4px 6px;
@@ -89,7 +99,6 @@ import Taskbar from '../components/Taskbar.astro';
     image-rendering: pixelated;
   }
 
-  /* TITLE BAR OS BUTTONS */
   .title-bar-controls {
     display: flex;
     gap: 2px;
@@ -119,7 +128,6 @@ import Taskbar from '../components/Taskbar.astro';
   }
   .win-btn.close::before { content: '×'; display: block; text-align: center; }
 
-  /* WINDOW CONTENT SPLIT */
   .window-body {
     flex-grow: 1;
     display: flex;
@@ -129,9 +137,8 @@ import Taskbar from '../components/Taskbar.astro';
     border: 1px solid #7f9db9;
   }
 
-  /* SIDEBAR DECORATION */
   .explorer-sidebar {
-    width: 180px;
+    flex: 0 0 180px;
     background: linear-gradient(to bottom, #7497cf 0%, #cbe1ff 100%);
     padding: 10px;
     border-right: 1px solid #6b8dc2;
@@ -175,7 +182,6 @@ import Taskbar from '../components/Taskbar.astro';
     text-decoration: underline;
   }
 
-  /* DYNAMIC VIEWPORT RIGHT SIDE */
   .explorer-content {
     flex-grow: 1;
     padding: 20px;
@@ -186,29 +192,47 @@ import Taskbar from '../components/Taskbar.astro';
 </style>
 
 <script>
-  // DOM Elements
-  const toggleBtn = document.getElementById('toggle-portfolio-btn');
   const portfolioWindow = document.getElementById('portfolio-window');
-  const closeBtn = document.getElementById('close-window-btn');
   const displayPanel = document.getElementById('display-panel');
   const navButtons = document.querySelectorAll('.nav-link');
+  
+  const minimizeBtn = document.getElementById('minimize-window-btn');
+  const maximizeBtn = document.getElementById('maximize-window-btn');
+  const closeBtn = document.getElementById('close-window-btn');
 
-  // 1. Taskbar Toggle functionality
+  const toggleBtn = document.getElementById('toggle-portfolio-btn');
   toggleBtn?.addEventListener('click', () => {
     if (portfolioWindow) {
       if (portfolioWindow.style.display === 'none') {
         portfolioWindow.style.display = 'flex';
+        toggleBtn.classList.add('active');  
       } else {
         portfolioWindow.style.display = 'none';
+        toggleBtn.classList.remove('active'); 
       }
     }
   });
 
-  closeBtn?.addEventListener('click', () => {
-    if (portfolioWindow) portfolioWindow.style.display = 'none';
+  minimizeBtn?.addEventListener('click', () => {
+    if (portfolioWindow) {
+      portfolioWindow.style.display = 'none';
+      toggleBtn?.classList.remove('active'); 
+    }
   });
 
-  // 2. Simple Client-Side Folder Navigation Shell
+  closeBtn?.addEventListener('click', () => {
+    if (portfolioWindow) {
+      portfolioWindow.style.display = 'none';
+      toggleBtn?.classList.remove('active');
+    }
+  });
+
+  maximizeBtn?.addEventListener('click', () => {
+    if (portfolioWindow) {
+      portfolioWindow.classList.toggle('maximized');
+    }
+  });
+
   const contentData = {
     home: `<h2>Welcome to My Portfolio</h2><p>Click on the sidebar folder links to explore my engineering work.</p>`,
     about: `<h2>About Me</h2><p>I am a computer science student building things with Astro.</p>`,
@@ -218,6 +242,9 @@ import Taskbar from '../components/Taskbar.astro';
   navButtons.forEach(button => {
     button.addEventListener('click', (e) => {
       const target = button.getAttribute('data-content');
+      navButtons.forEach(btn => btn.classList.remove('active'));
+      button.classList.add('active');
+
       if (displayPanel && target && contentData[target]) {
         displayPanel.innerHTML = contentData[target];
       }

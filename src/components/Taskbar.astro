@@ -81,7 +81,15 @@ import folderImage from '../assets/windowsXPFolder.png';
   }
 
   .folder-tray:hover {
-    background: #4c8ffc;
+    background: #1e4fa3;
+    border-color: #102a5c;
+    box-shadow: inset 2px 2px 3px rgba(0, 0, 0, 0.3);
+  }
+
+  .folder-tray.active {
+    background: #1e4fa3;
+    border-color: #102a5c;
+    box-shadow: inset 2px 2px 3px rgba(0, 0, 0, 0.3);
   }
 
   .folder-icon {
@@ -107,7 +115,6 @@ import folderImage from '../assets/windowsXPFolder.png';
 </style>
 
 <script>
-  // Simple script to make the clock display real time
   function updateClock() {
     const clockEl = document.getElementById('xp-clock');
     if (clockEl) {
