@@ -2,10 +2,11 @@
 import Layout from '../layouts/Layout.astro';
 import Taskbar from '../components/Taskbar.astro';
 import folderImage from '../assets/windowsXPFolder.png';
+import AboutMeContent from '../components/aboutMe.astro';
 import ProjectContent from '../components/Projects.astro';
-import FullertonFunhouse from '../components/FullertonFunhouse.astro';
-import RiseAndGrind from '../components/RiseAndGrind.astro';
-import OdooTesting from '../components/OdooTesting.astro';
+import FullertonFunhouse from '../components/projects/FullertonFunhouse.astro';
+import RiseAndGrind from '../components/projects/RiseAndGrind.astro';
+import OdooTesting from '../components/projects/OdooTesting.astro';
 import ContactContent from '../components/Contact.astro';
 ---
 
@@ -58,8 +59,7 @@ import ContactContent from '../components/Contact.astro';
             <p>Click on the sidebar folder links to explore my engineering work.</p>
           </div>
           <div id="content-about" class="content-section hidden">
-            <h2>About Me</h2>
-            <p>I am a computer science student building things with Astro.</p>
+            <AboutMeContent />
           </div>
           <div id="content-project" class="content-section hidden">
             <ProjectContent />
