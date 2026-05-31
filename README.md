@@ -1,46 +1,64 @@
-# Astro Starter Kit: Basics
+# Windows XP Portfolio
 
-```sh
-npm create astro@latest -- --template basics
-```
+A personal portfolio website designed to replicate the nostalgic user interface of the Windows XP operating system.
+This project showcases my professional experience, personal information, projects, and contact methods through
+interactive desktop windows, custom-managed state applications, and real-time UI components.
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+---
 
-## 🚀 Project Structure
+## Live Website
+[View Live Portfolio]
 
-Inside of your Astro project, you'll see the following folders and files:
+---
+
+## Tech Stack
+
+### Frontend & Architecture
+* **Astro Framework** - Used for fast page loads, component-based structure, and optimized build delivery.
+* **CSS** - Leveraged for precise, retro UI styling and responsive layouts.
+* **TypeScript** - Implements strict type safety for interactive UI states, window manipulation algorithms, and navigation history stacks to prevent runtime errors.
+
+---
+
+## Key Features
+* **Retro Window Management System:** Draggable, resizable, and minimizable application window that acts like a real folder system.
+* **Functional Folder Management System:** Selecting folders navigates to desired information, displaying professional experience, about me, projects, and contact information.
+* **Responsive Taskbar & Navigation:** Fully functional taskbar applet utility that tracks browser history states for fluid back and forward window navigation.
+
+---
+
+## Project Structure
 
 ```text
-/
-├── public/
-│   └── favicon.svg
-├── src
-│   ├── assets
-│   │   └── astro.svg
-│   ├── components
-│   │   └── Welcome.astro
-│   ├── layouts
-│   │   └── Layout.astro
-│   └── pages
-│       └── index.astro
+├── public/             # Static assets
+├── src                     
+│   ├── assets          # Images for folders
+│   ├── components      # UI Components (Taskbar, Work Info, etc.)
+│   ├── layouts         # Base HTML and metadata templates
+│   └── pages           # Main Astro pages
 └── package.json
 ```
 
-To learn more about the folder structure of an Astro project, refer to [our guide on project structure](https://docs.astro.build/en/basics/project-structure/).
+---
 
-## 🧞 Commands
+## Setup & Installation
+Follow these steps to clone the project:
 
-All commands are run from the root of the project, from a terminal:
+### Prerequisites
+Make sure you have [Node.js](https://nodejs.org/) installed (v18+).
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
+### 1. Clone the Repository
+```bash
+git clone https://github.com/JesusCazares2/windows-xp-portfolio.git
+cd windows-xp-portfolio
+```
 
-## 👀 Want to learn more?
+### 2. Install Dependencies
+```bash
+npm install
+```
 
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+### 3. Start the Development Server
+```bash
+npm run dev
+```
