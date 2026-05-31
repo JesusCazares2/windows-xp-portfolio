@@ -487,6 +487,8 @@ import ContactContent from '../components/Contact.astro';
     offsetX = e.clientX - rect.left;
     offsetY = e.clientY - rect.top;
 
+    portfolioWindow!.style.width = `${rect.width}px`;
+    portfolioWindow!.style.height = `${rect.height}px`;
     portfolioWindow!.style.position = 'absolute';
     portfolioWindow!.style.margin = '0';
   });
