@@ -73,6 +73,31 @@ import spaceShooter from '../../assets/spaceShooter.png';
 </div>
 
 <style>
+  .project-item ul {
+    list-style-type: none;
+    padding-left: 5px;
+    margin-top: 10px;
+  }
+  .project-item li {
+    position: relative;
+    padding-left: 20px;
+    margin-bottom: 10px;
+    line-height: 1.5;
+    font-size: 15px;
+  }
+
+  .project-item li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 6px;
+    width: 8px;
+    height: 8px;
+    background: linear-gradient(135deg, #0058e6 0%, #3a93ff 100%);
+    border: 1px solid #003399;
+    box-shadow: 1px 1px 1px rgba(0,0,0,0.2);
+  }
+
   .image-container {
     max-width: 500px;
     height: 300px;  
