@@ -25,4 +25,3 @@ pnpm-debug.log*
 
 # Ignore large portfolio demo videos and personal image
 *.mp4
-src/assets/gradphoto.jpg
