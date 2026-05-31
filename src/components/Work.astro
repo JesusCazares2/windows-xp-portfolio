@@ -1,0 +1,69 @@
+---
+import folderImage from '../assets/windowsXPFolder.png';
+---
+
+<div class="project-container">
+  <h2>Work Experience</h2>
+  <p>Select a folder to view details:</p>
+  
+  <div class="folder-grid">
+    <button class="icon-item nav-link" data-content="month2month">
+      <img src={folderImage.src} alt="Folder" />
+      <span>Month2Month</span>
+    </button>
+
+    <button class="icon-item nav-link" data-content="iusd">
+      <img src={folderImage.src} alt="Folder" />
+      <span>Irvine Unified School District</span>
+    </button>
+
+    <button class="icon-item nav-link" data-content="octi">
+      <img src={folderImage.src} alt="Folder" />
+      <span>Orange Coast Testing Inc.</span>
+    </button>
+  </div>
+</div>
+
+<style>
+  .project-container {
+    width: 100%;
+  }
+
+  .folder-grid {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 15px;
+    padding: 20px 0;
+    width: 100%;
+    justify-content: flex-start;
+  }
+
+  .icon-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 110px;
+    background: none;
+    border: 1px solid transparent;
+    cursor: pointer;
+    padding: 8px 4px;
+    transition: all 0.1s;
+    vertical-align: top;
+  }
+
+  .icon-item img {
+    width: 48px !important;
+    height: 48px !important;
+    margin-bottom: 4px;
+    display: block;
+  }
+
+  .icon-item span {
+    font-size: 12px;
+    text-align: center;
+    color: #000;
+    width: 100%;
+    word-wrap: break-word;
+  }
+</style>

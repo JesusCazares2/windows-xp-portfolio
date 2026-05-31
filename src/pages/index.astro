@@ -2,6 +2,8 @@
 import Layout from '../layouts/Layout.astro';
 import Taskbar from '../components/Taskbar.astro';
 import folderImage from '../assets/windowsXPFolder.png';
+import WorkContent from '../components/Work.astro';
+import Month2Month from '../components/jobs/Month2Month.astro';
 import AboutMeContent from '../components/aboutMe.astro';
 import PersonalStatement from '../components/about-me/personalStatement.astro';
 import ProjectContent from '../components/Projects.astro';
@@ -32,7 +34,14 @@ import ContactContent from '../components/Contact.astro';
           <div class="sidebar-section">
             <h3>Portfolio Places</h3>
             <ul>
-              <li><button class="nav-link active" data-content="home">💼 Work Experience</button></li>
+              <li>
+                <button class="nav-link active" data-content="work">💼 Work Experience</button>
+                <ul class="submenu hidden" id="work-submenu">
+                  <li><button class="nav-link" data-content="month2month">Month2Month</button></li>
+                  <li><button class="nav-link" data-content="iusd">Irvine Unified School District</button></li>
+                  <li><button class="nav-link" data-content="octi">Orange Coast Testing Inc.</button></li>
+                </ul>
+              </li>
               <li><button class="nav-link" data-content="about">👤 About Me</button></li>
               <li>
                 <button class="nav-link" data-content="project">📂 Projects</button>
@@ -58,6 +67,12 @@ import ContactContent from '../components/Contact.astro';
           <div id="content-home" class="content-section">
             <h2>Welcome to My Portfolio</h2>
             <p>Click on the sidebar folder links to explore my engineering work.</p>
+          </div>
+          <div id="content-work" class="content-section hidden">
+            <WorkContent />
+          </div>
+          <div id="content-month2month" class="content-section hidden">
+            <Month2Month />
           </div>
           <div id="content-about" class="content-section hidden">
             <AboutMeContent />
@@ -324,6 +339,8 @@ import ContactContent from '../components/Contact.astro';
 
     if (target === 'project') {
       document.getElementById('projects-submenu')?.classList.toggle('hidden');
+    } else if (target === 'work') {
+      document.getElementById('work-submenu')?.classList.toggle('hidden');
     } else if (target === 'contact') {
       document.getElementById('contact-submenu')?.classList.toggle('hidden');
     }
