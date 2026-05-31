@@ -1,7 +1,4 @@
 ---
-import seleniumEX from '../../assets/odootesting-images/seleniumEX.mp4';
-import keywordEX from '../../assets/odootesting-images/keywordEX.mp4';
-import pythonEX from '../../assets/odootesting-images/pythonEX.mp4';
 ---
 <div id="ot-project-wrapper">
 <div class="project-item">
@@ -15,60 +12,51 @@ import pythonEX from '../../assets/odootesting-images/pythonEX.mp4';
   </ul>
 </div>
 
-<div class="image-container">
-  <div class="mySlides fade">
-    <video 
-      class="main-img" 
-      autoplay 
-      loop 
-      muted 
-      playsinline
-      controls
-    >
-      <source src={pythonEX} type="video/mp4" />
-      Your browser does not support the video tag.
-    </video>
+  <div class="image-container">
+    <div class="mySlides fade">
+      <iframe 
+        class="main-img" 
+        src="https://www.youtube.com/embed/gwlhXEsGw4k?autoplay=1&mute=1&loop=1&playlist=gwlhXEsGw4k&origin=http://localhost:4321" 
+        title="Odoo Python Unit Testing Demo"
+        frameborder="0" 
+        allow="autoplay; encrypted-media; gyroscope; picture-in-picture" 
+        allowfullscreen
+      ></iframe>
+    </div>
+
+    <div class="mySlides fade">
+      <iframe 
+        class="main-img" 
+        src="https://www.youtube.com/embed/Fja7qXqAzwQ?autoplay=1&mute=1&loop=1&playlist=Fja7qXqAzwQ&origin=http://localhost:4321" 
+        title="Selenium UI Testing Demo"
+        frameborder="0" 
+        allow="autoplay; encrypted-media; gyroscope; picture-in-picture" 
+        allowfullscreen
+      ></iframe>
+    </div>
+
+    <div class="mySlides fade">
+      <iframe 
+        class="main-img" 
+        src="https://www.youtube.com/embed/t6wQs8afggk?autoplay=1&mute=1&loop=1&playlist=t6wQs8afggk&origin=http://localhost:4321" 
+        title="Robot Framework Testing Demo"
+        frameborder="0" 
+        allow="autoplay; encrypted-media; gyroscope; picture-in-picture" 
+        allowfullscreen
+      ></iframe>
+    </div>
+
+    <a class="next" id="otNextSlide">&#10095;</a>
+    <a class="prev" id="otPrevSlide">&#10094;</a>
   </div>
 
-  <div class="mySlides fade">
-    <video 
-      class="main-img" 
-      autoplay 
-      loop 
-      muted 
-      playsinline
-      controls
-    >
-      <source src={seleniumEX} type="video/mp4" />
-      Your browser does not support the video tag.
-    </video>
+  <br> 
+
+  <div style="text-align:center">
+    <span class="dot"></span>
+    <span class="dot"></span>
+    <span class="dot"></span>
   </div>
-
-  <div class="mySlides fade">
-    <video 
-      class="main-img" 
-      autoplay 
-      loop 
-      muted 
-      playsinline
-      controls
-    >
-      <source src={keywordEX} type="video/mp4" />
-      Your browser does not support the video tag.
-    </video>
-  </div>
-
-  <a class="next" id="otNextSlide">&#10095;</a>
-  <a class="prev" id="otPrevSlide">&#10094;</a>
-</div>
-
-<br> 
-
-<div style="text-align:center">
-  <span class="dot"></span>
-  <span class="dot"></span>
-  <span class="dot"></span>
-</div>
 </div>
 
 <style>

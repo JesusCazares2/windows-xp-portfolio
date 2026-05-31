@@ -23,5 +23,3 @@ pnpm-debug.log*
 # jetbrains setting folder
 .idea/
 
-# Ignore large portfolio demo videos and personal image
-*.mp4
