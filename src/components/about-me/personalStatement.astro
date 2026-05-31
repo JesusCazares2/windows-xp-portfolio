@@ -1,0 +1,89 @@
+---
+import personalimage from '../../assets/gradphoto.jpg';
+---
+
+<div class="about-me-section">
+  <h2>👤 About Me</h2>
+  <p>
+    I’m a recent Computer Science grad from CSUF who loves building software, but I've always had fascination with 
+    airplanes, rockets, and the aerospace industry. My path into software engineering is a bit 
+    unique, before jumping full-time into code, my background involved a mix of different jobs, including working 
+    for nearly three years in a non-destructive testing facility handling actual aerospace components.
+  </p>
+  <p>
+    Today, I love bringing those two worlds together, whether I'm hacking away on full-stack web platforms, working 
+    with robotic manipulation systems, or building clean data pipelines, I focus on writing reliable code that seamlessly 
+    bridges software with real-world applications.
+  </p>
+
+
+  <h3>Collaboration & Milestones</h3>
+  <p>
+    I thrive in fast-paced, collaborative environments. I recently engineered solutions for a 
+    5-month industry-sponsored autonomous inspection system, culminating in a successful presentation 
+    at the CSUF Engineering & Computer Science Innovation Expo. I specialize in taking a high-level 
+    hardware challenge, collaborating with a core team, and delivering functional software pipelines.
+  </p>
+
+  <h3>🏋️ Outside the Code</h3>
+  <p>Outside of computer science, my interests are quite diverse:</p>
+  <ul>
+    <li>Hanging out with my wonderful girlfriend and friends</li>
+    <li>Traveling</li>
+    <li>Trying unique restaurants and ranking them</li>
+    <li>Playing basketball and soccer</li>
+    <li>Going on hikes</li>
+    <li>Working out at the gym</li>
+  </ul>
+
+  <div class="image-container">
+    <img class="main-img" src={personalimage.src} alt="Folder" />
+  </div>
+
+
+</div>
+
+<style>
+  .about-me-section ul {
+    list-style-type: none;
+    padding-left: 5px;
+    margin-top: 10px;
+  }
+
+  .about-me-section li {
+    position: relative;
+    padding-left: 20px;
+    margin-bottom: 10px;
+    line-height: 1.5;
+    font-size: 13px;
+  }
+
+  .about-me-section li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 6px;
+    width: 8px;
+    height: 8px;
+    background: linear-gradient(135deg, #0058e6 0%, #3a93ff 100%);
+    border: 1px solid #003399;
+    box-shadow: 1px 1px 1px rgba(0,0,0,0.2);
+  }
+
+  .image-container {
+    max-width: 200px;
+    height: 300px;  
+    position: relative;
+    margin: auto;
+    border: 1px solid #000;
+    overflow: hidden;
+  }
+
+  .main-img {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    object-fit: contain; 
+    z-index: 1;
+  }
+</style>

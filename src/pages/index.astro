@@ -3,6 +3,7 @@ import Layout from '../layouts/Layout.astro';
 import Taskbar from '../components/Taskbar.astro';
 import folderImage from '../assets/windowsXPFolder.png';
 import AboutMeContent from '../components/aboutMe.astro';
+import PersonalStatement from '../components/about-me/personalStatement.astro';
 import ProjectContent from '../components/Projects.astro';
 import FullertonFunhouse from '../components/projects/FullertonFunhouse.astro';
 import RiseAndGrind from '../components/projects/RiseAndGrind.astro';
@@ -60,6 +61,9 @@ import ContactContent from '../components/Contact.astro';
           </div>
           <div id="content-about" class="content-section hidden">
             <AboutMeContent />
+          </div>
+           <div id="content-about-me-writeup" class="content-section hidden">
+            <PersonalStatement />
           </div>
           <div id="content-project" class="content-section hidden">
             <ProjectContent />
