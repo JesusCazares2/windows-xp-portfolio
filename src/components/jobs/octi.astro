@@ -1,62 +1,71 @@
 ---
-import pointCloud from '../../assets/pointCloud.png';
-import rgb_d from '../../assets/rgb_d.png';
-import activeGrip from '../../assets/activeGrip.png';
+import Film from '../../assets/film.jpg';
+import CR from '../../assets/cr.jpg';
+import Enclosure from '../../assets/enclosure.jpg';
+import Digital from '../../assets/digital.jpg';
 ---
-<div id="mm-project-wrapper">
+<div id="octi-project-wrapper">
 <div class="work-item">
     <div class="work-header">
         <div class="title-section">
-            <h2 class="company">Month2Month</h2>
-            <h3 class="role">Robotics Software Engineer Intern</h3>
+            <h2 class="company">Orange Coast Testing, Inc.</h2>
+            <h3 class="role">RT Technician & Information Technology Specialist</h3>
         </div>
         <div class="meta-section">
-            <span class="dates">January 2026 - May 2026</span>
-            <span class="location">Fullerton, CA</span>
+            <span class="dates">January 2022 - October 2022</span>
+            <span class="location">Santa Ana, CA</span>
         </div>
     </div>
     <p>
-        Engineered a real-time predictive control system using Radial Basis Function Interpolation to map 2D pixel coordinates directly to joint angles.
+        Operated industrial X-ray and gamma-ray imaging systems to inspect critical aerospace and defense components, 
+        analyzing structural integrity to catch internal defects before parts went into production.
     </p>
     <p>
-        Implemented a demonstration-based learning workflow by training the RBF model on 50 manual physical examples to learn spatial mappings directly from the environment.
+        Doubled as the facility's IT support, resolving 95% of technical tickets independently with same-day solutions 
+        to keep operations running smoothly and minimize staff downtime.
     </p>
     <p>
-        Developed a high-speed Python manipulation loop that predicts and executes grasp sequences, synchronizing a RealSense D435i depth stream with the D1 Arm via DDS.
+        Cleaned up and reorganized the company’s shared network drives, implementing a standardized folder structure and 
+        setting up weekly automated backups to ensure data retention.
     </p>
 
-    <p>Tech Stack:</p>
+    <p>Skills & Tools:</p>
     <ul>
-        <li>Core Languages: Python, C++</li>
-        <li>Frameworks & SDKs: ROS2 (Humble), Unitree SDK2</li>
-        <li>Computer Vision / Input: OpenCV</li>
-        <li>Hardware: Unitree Go2, Unitree D1, Intel RealSense D435i, Unitree Go2 Controllers, Customer Camera Mount</li>
+        <li>NDT Systems: Industrial X-Rays, Gamma Rays, Digital X-Ray, Radiographic Interpretation</li>
+        <li>IT Systems: Active Directory, Windows Server Admin, Ticket System</li>
+        <li>Data: Shared Drives, Automated Backups, Folder Architecture</li>
     </ul>
 </div>
 
 <div class="image-container">
   <div class="mySlides fade">
-    <img class="bg-blur" src={pointCloud.src} aria-hidden="true" />
-    <img class="main-img" src={pointCloud.src} alt="3D Point Cloud Image" />
+    <img class="bg-blur" src={Film.src} aria-hidden="true" />
+    <img class="main-img" src={Film.src} alt="XRay Film" />
   </div>
 
   <div class="mySlides fade">
-    <img class="bg-blur" src={rgb_d.src} aria-hidden="true" />
-    <img class="main-img" src={rgb_d.src} alt="RGB-D Image" />
+    <img class="bg-blur" src={Digital.src} aria-hidden="true" />
+    <img class="main-img" src={Digital.src} alt="Digital XRay" />
   </div>
 
   <div class="mySlides fade">
-    <img class="bg-blur" src={activeGrip.src} aria-hidden="true" />
-    <img class="main-img" src={activeGrip.src} alt="Robot Grippng Item" />
+    <img class="bg-blur" src={Enclosure.src} aria-hidden="true" />
+    <img class="main-img" src={Enclosure.src} alt="XRay Enclosure" />
   </div>
 
-  <a class="next" id="mmNextSlide">&#10095;</a>
-  <a class="prev" id="mmPrevSlide">&#10094;</a>
+  <div class="mySlides fade">
+    <img class="bg-blur" src={CR.src} aria-hidden="true" />
+    <img class="main-img" src={CR.src} alt="XRay CR Machine" />
+  </div>
+
+  <a class="next" id="octiNextSlide">&#10095;</a>
+  <a class="prev" id="octiPrevSlide">&#10094;</a>
 </div>
 
 <br> 
 
 <div style="text-align:center">
+  <span class="dot"></span>
   <span class="dot"></span>
   <span class="dot"></span>
   <span class="dot"></span>
@@ -216,7 +225,7 @@ import activeGrip from '../../assets/activeGrip.png';
 </style>
 
 <script>
-  const wrapper = document.getElementById("mm-project-wrapper");
+  const wrapper = document.getElementById("octi-project-wrapper");
   const slides = wrapper?.querySelectorAll(".mySlides") as NodeListOf<HTMLElement>;
   const dots = wrapper?.querySelectorAll(".dot") as NodeListOf<HTMLElement>;
   let slideIndex = 1;
@@ -235,8 +244,8 @@ import activeGrip from '../../assets/activeGrip.png';
 
   showSlides(slideIndex);
 
-  wrapper?.querySelector("#mmPrevSlide")?.addEventListener("click", () => showSlides(--slideIndex));
-  wrapper?.querySelector("#mmNextSlide")?.addEventListener("click", () => showSlides(++slideIndex));
+  wrapper?.querySelector("#octiPrevSlide")?.addEventListener("click", () => showSlides(--slideIndex));
+  wrapper?.querySelector("#octiNextSlide")?.addEventListener("click", () => showSlides(++slideIndex));
 
   dots.forEach((dot, index) => {
     dot.addEventListener("click", () => {

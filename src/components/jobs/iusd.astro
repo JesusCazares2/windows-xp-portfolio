@@ -1,63 +1,54 @@
 ---
-import pointCloud from '../../assets/pointCloud.png';
-import rgb_d from '../../assets/rgb_d.png';
-import activeGrip from '../../assets/activeGrip.png';
+import PHS from '../../assets/phs.png';
+import School from '../../assets/school.jpg';
 ---
-<div id="mm-project-wrapper">
+<div id="iusd-project-wrapper">
 <div class="work-item">
     <div class="work-header">
         <div class="title-section">
-            <h2 class="company">Month2Month</h2>
-            <h3 class="role">Robotics Software Engineer Intern</h3>
+            <h2 class="company">Irvine Unified School District</h2>
+            <h3 class="role">High School Custodian</h3>
         </div>
         <div class="meta-section">
-            <span class="dates">January 2026 - May 2026</span>
-            <span class="location">Fullerton, CA</span>
+            <span class="dates">October 2024 - Present</span>
+            <span class="location">Irvine, CA</span>
         </div>
     </div>
     <p>
-        Engineered a real-time predictive control system using Radial Basis Function Interpolation to map 2D pixel coordinates directly to joint angles.
+        Managed and maintained 20% of Portola High School, making sure classrooms and facilities were completely clean, safe, and ready for students and staff every day.
     </p>
     <p>
-        Implemented a demonstration-based learning workflow by training the RBF model on 50 manual physical examples to learn spatial mappings directly from the environment.
+        Coordinated directly with staff and event organizers to set up scheduled activities and quickly took care of any facility issues that popped up on the fly.
     </p>
     <p>
-        Developed a high-speed Python manipulation loop that predicts and executes grasp sequences, synchronizing a RealSense D435i depth stream with the D1 Arm via DDS.
+        Handled daily tasks independently with strong time management and attention to detail, ensuring school operations ran smoothly without needing constant supervision.
     </p>
 
-    <p>Tech Stack:</p>
+    <p>Skills:</p>
     <ul>
-        <li>Core Languages: Python, C++</li>
-        <li>Frameworks & SDKs: ROS2 (Humble), Unitree SDK2</li>
-        <li>Computer Vision / Input: OpenCV</li>
-        <li>Hardware: Unitree Go2, Unitree D1, Intel RealSense D435i, Unitree Go2 Controllers, Customer Camera Mount</li>
+        <li>Operations & Safety: Facilities Maintenance, Chemical Safety, Equipment Operation</li>
+        <li>Workplace Efficiency: Time Management, Problem Solving, Multitasking, Collaboration</li>
     </ul>
 </div>
 
 <div class="image-container">
   <div class="mySlides fade">
-    <img class="bg-blur" src={pointCloud.src} aria-hidden="true" />
-    <img class="main-img" src={pointCloud.src} alt="3D Point Cloud Image" />
+    <img class="bg-blur" src={PHS.src} aria-hidden="true" />
+    <img class="main-img" src={PHS.src} alt="Portola High School" />
   </div>
 
   <div class="mySlides fade">
-    <img class="bg-blur" src={rgb_d.src} aria-hidden="true" />
-    <img class="main-img" src={rgb_d.src} alt="RGB-D Image" />
+    <img class="bg-blur" src={School.src} aria-hidden="true" />
+    <img class="main-img" src={School.src} alt="Aerial image of campus" />
   </div>
 
-  <div class="mySlides fade">
-    <img class="bg-blur" src={activeGrip.src} aria-hidden="true" />
-    <img class="main-img" src={activeGrip.src} alt="Robot Grippng Item" />
-  </div>
-
-  <a class="next" id="mmNextSlide">&#10095;</a>
-  <a class="prev" id="mmPrevSlide">&#10094;</a>
+  <a class="next" id="iusdNextSlide">&#10095;</a>
+  <a class="prev" id="iusdPrevSlide">&#10094;</a>
 </div>
 
 <br> 
 
 <div style="text-align:center">
-  <span class="dot"></span>
   <span class="dot"></span>
   <span class="dot"></span>
 </div>
@@ -108,6 +99,7 @@ import activeGrip from '../../assets/activeGrip.png';
     padding-left: 5px;
     margin-top: 10px;
   }
+  
   .work-item li {
     position: relative;
     padding-left: 20px;
@@ -216,7 +208,7 @@ import activeGrip from '../../assets/activeGrip.png';
 </style>
 
 <script>
-  const wrapper = document.getElementById("mm-project-wrapper");
+  const wrapper = document.getElementById("iusd-project-wrapper");
   const slides = wrapper?.querySelectorAll(".mySlides") as NodeListOf<HTMLElement>;
   const dots = wrapper?.querySelectorAll(".dot") as NodeListOf<HTMLElement>;
   let slideIndex = 1;
@@ -235,8 +227,8 @@ import activeGrip from '../../assets/activeGrip.png';
 
   showSlides(slideIndex);
 
-  wrapper?.querySelector("#mmPrevSlide")?.addEventListener("click", () => showSlides(--slideIndex));
-  wrapper?.querySelector("#mmNextSlide")?.addEventListener("click", () => showSlides(++slideIndex));
+  wrapper?.querySelector("#iusdPrevSlide")?.addEventListener("click", () => showSlides(--slideIndex));
+  wrapper?.querySelector("#iusdNextSlide")?.addEventListener("click", () => showSlides(++slideIndex));
 
   dots.forEach((dot, index) => {
     dot.addEventListener("click", () => {

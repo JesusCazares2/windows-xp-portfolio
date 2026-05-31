@@ -4,6 +4,8 @@ import Taskbar from '../components/Taskbar.astro';
 import folderImage from '../assets/windowsXPFolder.png';
 import WorkContent from '../components/Work.astro';
 import Month2Month from '../components/jobs/Month2Month.astro';
+import IUSD from '../components/jobs/iusd.astro';
+import OCTI from '../components/jobs/octi.astro';
 import AboutMeContent from '../components/aboutMe.astro';
 import PersonalStatement from '../components/about-me/personalStatement.astro';
 import ProjectContent from '../components/Projects.astro';
@@ -39,7 +41,7 @@ import ContactContent from '../components/Contact.astro';
                 <ul class="submenu hidden" id="work-submenu">
                   <li><button class="nav-link" data-content="month2month">Month2Month</button></li>
                   <li><button class="nav-link" data-content="iusd">Irvine Unified School District</button></li>
-                  <li><button class="nav-link" data-content="octi">Orange Coast Testing Inc.</button></li>
+                  <li><button class="nav-link" data-content="octi">Orange Coast Testing, Inc.</button></li>
                 </ul>
               </li>
               <li><button class="nav-link" data-content="about">👤 About Me</button></li>
@@ -73,6 +75,12 @@ import ContactContent from '../components/Contact.astro';
           </div>
           <div id="content-month2month" class="content-section hidden">
             <Month2Month />
+          </div>
+          <div id="content-iusd" class="content-section hidden">
+            <IUSD />
+          </div>
+          <div id="content-octi" class="content-section hidden">
+            <OCTI />
           </div>
           <div id="content-about" class="content-section hidden">
             <AboutMeContent />
