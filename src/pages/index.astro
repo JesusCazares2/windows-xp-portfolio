@@ -2,6 +2,7 @@
 import Layout from '../layouts/Layout.astro';
 import Taskbar from '../components/Taskbar.astro';
 import folderImage from '../assets/windowsXPFolder.png';
+import leftArrow from '../assets/left_arrow.png';
 import HomeContent from '../components/HomePage.astro';
 import WorkContent from '../components/Work.astro';
 import Month2Month from '../components/jobs/Month2Month.astro';
@@ -21,21 +22,31 @@ import ContactContent from '../components/Contact.astro';
   <main class="desktop">
     <div class="xp-window" id="portfolio-window">
       <div class="title-bar">
-        <div class="title-bar-text">
-          <img id=folderImage src={folderImage.src} class="window-title-icon" alt="Folder" />
-          My Portfolio
+        <div class="title-bar-top">
+          <div class="title-bar-text">
+            <img id="folderImage" src={folderImage.src} class="window-title-icon" alt="Folder" />
+            My Portfolio
+          </div>
+          <div class="title-bar-controls">
+            <button class="win-btn minimize" id="minimize-window-btn" aria-label="Minimize"></button>
+            <button class="win-btn maximize" id="maximize-window-btn" aria-label="Maximize"></button>
+            <button class="win-btn close" id="close-window-btn" aria-label="Close"></button>
+          </div>
         </div>
-        <div class="title-bar-controls">
-          <button class="win-btn minimize" id="minimize-window-btn" aria-label="Minimize"></button>
-          <button class="win-btn maximize" id="maximize-window-btn" aria-label="Maximize"></button>
-          <button class="win-btn close" id="close-window-btn" aria-label="Close"></button>
+        <div class="history-buttons">
+          <button class="arrow-btn goback" id="go-back-btn">
+            <img src={leftArrow.src} alt="Left Arrow" />
+          </button>
+          <button class="arrow-btn goforward" id="go-forward-btn">
+            <img src={leftArrow.src} alt="Right Arrow" Style="transform: rotate(180deg);" />
+          </button>
         </div>
       </div>
 
       <div class="window-body">
         <aside class="explorer-sidebar">
           <div class="sidebar-section">
-            <h3>Portfolio Places</h3>
+            <h3>Content</h3>
             <ul>
             <li>
                 <button class="nav-link active" data-content="home">🏠 Home</button>
@@ -164,8 +175,22 @@ import ContactContent from '../components/Contact.astro';
     font-size: 13px;
     font-family: 'Tahoma', sans-serif;
     display: flex;
+    flex-direction: column;
+    gap: 6px;
+    cursor: move;
+  }
+
+  .title-bar-top {
+    display: flex;
     justify-content: space-between;
     align-items: center;
+    width: 100%;
+  }
+
+  .history-buttons {
+    display: flex;
+    gap: 4px;
+    padding-bottom: 2px;
   }
 
   .window-title-icon {
@@ -204,6 +229,23 @@ import ContactContent from '../components/Contact.astro';
     line-height: 16px;
   }
   .win-btn.close::before { content: '×'; display: block; text-align: center; }
+
+  .arrow-btn {
+    width: 21px;
+    height: 21px;
+    border: none;
+    background: none;
+    box-shadow: none;
+    cursor: pointer;
+    padding: 0;
+  }
+
+  .arrow-btn img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    image-rendering: pixelated;
+  }
 
   .window-body {
     flex-grow: 1;
@@ -300,9 +342,16 @@ import ContactContent from '../components/Contact.astro';
   const displayPanel = document.getElementById('display-panel');
   const navButtons = document.querySelectorAll('.nav-link');
   
+  // Navigation History Stack
+  let navStack = ['home'];
+  let stackIndex = 0;
+
   const minimizeBtn = document.getElementById('minimize-window-btn');
   const maximizeBtn = document.getElementById('maximize-window-btn');
   const closeBtn = document.getElementById('close-window-btn');
+
+  const goBackBtn = document.getElementById('go-back-btn');
+  const goForwardBtn = document.getElementById('go-forward-btn');
 
   const toggleBtn = document.getElementById('toggle-portfolio-btn');
   toggleBtn?.addEventListener('click', () => {
@@ -334,13 +383,19 @@ import ContactContent from '../components/Contact.astro';
   maximizeBtn?.addEventListener('click', () => {
     if (portfolioWindow) {
       portfolioWindow.classList.toggle('maximized');
+      if (portfolioWindow.classList.contains('maximized')) {
+        portfolioWindow.style.top = '';
+        portfolioWindow.style.left = '';
+        portfolioWindow.style.position = '';
+      }
     }
   });
 
-  const handleNavigation = (button: Element) => {
-    const target = button.getAttribute('data-content');
+  const handleNavigation = (button: Element | string, isHistoryMove = false) => {
+    const target = typeof button === 'string' ? button : button.getAttribute('data-content');
     if (!target) return;
 
+    // External/Action links
     if (target === 'email') {
       window.location.href = "mailto:jesusmcazares12@gmail.com";
       return;
@@ -354,16 +409,27 @@ import ContactContent from '../components/Contact.astro';
       return;
     }
 
-    if (target === 'project') {
-      document.getElementById('projects-submenu')?.classList.toggle('hidden');
-    } else if (target === 'home') {
-      document.getElementById('home-submenu')?.classList.toggle('hidden');
-    }else if (target === 'work') {
-      document.getElementById('work-submenu')?.classList.toggle('hidden');
-    } else if (target === 'contact') {
-      document.getElementById('contact-submenu')?.classList.toggle('hidden');
+    // Logic for Submenus (only if clicked manually)
+    if (!isHistoryMove) {
+      if (target === 'project') {
+        document.getElementById('projects-submenu')?.classList.toggle('hidden');
+      } else if (target === 'home') {
+        document.getElementById('home-submenu')?.classList.toggle('hidden');
+      } else if (target === 'work') {
+        document.getElementById('work-submenu')?.classList.toggle('hidden');
+      } else if (target === 'contact') {
+        document.getElementById('contact-submenu')?.classList.toggle('hidden');
+      }
     }
-    
+
+    // History Tracking
+    if (!isHistoryMove && navStack[stackIndex] !== target) {
+      navStack = navStack.slice(0, stackIndex + 1);
+      navStack.push(target);
+      stackIndex++;
+    }
+
+    // UI Update
     navButtons.forEach(btn => btn.classList.toggle('active', btn.getAttribute('data-content') === target));
 
     const targetSection = document.getElementById(`content-${target}`);
@@ -374,4 +440,58 @@ import ContactContent from '../components/Contact.astro';
   };
 
   navButtons.forEach(button => button.addEventListener('click', () => handleNavigation(button)));
+
+  goBackBtn?.addEventListener('click', () => {
+    if (stackIndex > 0) {
+      stackIndex--;
+      handleNavigation(navStack[stackIndex], true);
+    }
+  });
+
+  goForwardBtn?.addEventListener('click', () => {
+    if (stackIndex < navStack.length - 1) {
+      stackIndex++;
+      handleNavigation(navStack[stackIndex], true);
+    }
+  });
+
+  let isDragging = false;
+  let offsetX = 0;
+  let offsetY = 0;
+
+  const titleBar = portfolioWindow?.querySelector('.title-bar');
+
+  titleBar?.addEventListener('mousedown', (e) => {
+    if (portfolioWindow?.classList.contains('maximized')) return;
+    
+    const target = e.target as HTMLElement;
+    if (target.closest('.title-bar-controls') || target.closest('.history-buttons')) return;
+
+    isDragging = true;
+    const rect = portfolioWindow!.getBoundingClientRect();
+    offsetX = e.clientX - rect.left;
+    offsetY = e.clientY - rect.top;
+
+    portfolioWindow!.style.position = 'absolute';
+    portfolioWindow!.style.margin = '0';
+  });
+
+  document.addEventListener('mousemove', (e) => {
+    if (!isDragging || !portfolioWindow) return;
+
+    let newLeft = e.clientX - offsetX;
+    let newTop = e.clientY - offsetY;
+
+    const minX = 0;
+    const minY = 0;
+    const maxX = window.innerWidth - portfolioWindow.offsetWidth;
+    const maxY = window.innerHeight - portfolioWindow.offsetHeight - 30; 
+
+    portfolioWindow.style.left = `${Math.max(minX, Math.min(newLeft, maxX))}px`;
+    portfolioWindow.style.top = `${Math.max(minY, Math.min(newTop, maxY))}px`;
+  });
+
+  document.addEventListener('mouseup', () => {
+    isDragging = false;
+  });
 </script>
