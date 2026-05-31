@@ -144,9 +144,18 @@ import ContactContent from '../components/Contact.astro';
     align-items: center;
   }
 
+  @media (max-width: 1024px) or (max-height: 800px) {
+    .desktop {
+      padding: 10px;
+    }
+  }
+
   .xp-window {
     width: 950px;
+    max-width: 100%;
     height: 750px;
+    max-height: 100%;
+    box-sizing: border-box;
     background: #ece9d8;
     border: 3px solid #0054e3;
     border-top-left-radius: 5px;
@@ -261,6 +270,12 @@ import ContactContent from '../components/Contact.astro';
     background: linear-gradient(to bottom, #7497cf 0%, #cbe1ff 100%);
     padding: 10px;
     border-right: 1px solid #6b8dc2;
+  }
+
+  @media (max-width: 600px) {
+    .explorer-sidebar {
+      flex: 0 0 140px;
+    }
   }
 
   .sidebar-section {
