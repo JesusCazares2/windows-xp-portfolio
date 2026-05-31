@@ -2,6 +2,7 @@
 import Layout from '../layouts/Layout.astro';
 import Taskbar from '../components/Taskbar.astro';
 import folderImage from '../assets/windowsXPFolder.png';
+import HomeContent from '../components/HomePage.astro';
 import WorkContent from '../components/Work.astro';
 import Month2Month from '../components/jobs/Month2Month.astro';
 import IUSD from '../components/jobs/iusd.astro';
@@ -36,8 +37,17 @@ import ContactContent from '../components/Contact.astro';
           <div class="sidebar-section">
             <h3>Portfolio Places</h3>
             <ul>
+            <li>
+                <button class="nav-link active" data-content="home">🏠 Home</button>
+                <ul class="submenu hidden" id="home-submenu">
+                  <li><button class="nav-link" data-content="work">Work Experience</button></li>
+                  <li><button class="nav-link" data-content="about">About Me</button></li>
+                  <li><button class="nav-link" data-content="project">Projects</button></li>
+                  <li><button class="nav-link" data-content="contact">Contact</button></li>
+                </ul>
+              </li>
               <li>
-                <button class="nav-link active" data-content="work">💼 Work Experience</button>
+                <button class="nav-link" data-content="work">💼 Work Experience</button>
                 <ul class="submenu hidden" id="work-submenu">
                   <li><button class="nav-link" data-content="month2month">Month2Month</button></li>
                   <li><button class="nav-link" data-content="iusd">Irvine Unified School District</button></li>
@@ -67,8 +77,7 @@ import ContactContent from '../components/Contact.astro';
 
         <section class="explorer-content" id="display-panel">
           <div id="content-home" class="content-section">
-            <h2>Welcome to My Portfolio</h2>
-            <p>Click on the sidebar folder links to explore my engineering work.</p>
+            <HomeContent />
           </div>
           <div id="content-work" class="content-section hidden">
             <WorkContent />
@@ -347,7 +356,9 @@ import ContactContent from '../components/Contact.astro';
 
     if (target === 'project') {
       document.getElementById('projects-submenu')?.classList.toggle('hidden');
-    } else if (target === 'work') {
+    } else if (target === 'home') {
+      document.getElementById('home-submenu')?.classList.toggle('hidden');
+    }else if (target === 'work') {
       document.getElementById('work-submenu')?.classList.toggle('hidden');
     } else if (target === 'contact') {
       document.getElementById('contact-submenu')?.classList.toggle('hidden');
